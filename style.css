@@ -1,0 +1,80 @@
+:root {
+	--panel-width: 90vw;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background: url("./assets/images/bg-sidebar-mobile.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.panel {
+	position: relative;
+	overflow-x: hidden;
+
+	width: var(--panel-width);
+}
+
+.panel-content {
+	display: flex;
+	flex-direction: row;
+	transition: transform 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.slide {
+	flex-shrink: 0;
+	width: var(--panel-width);
+	height: fit-content;
+	margin-right: 30px;
+	background-color: aqua;
+}
+
+.nav-buttons {
+	display: flex;
+}
+
+.input-container {
+	display: grid;
+	grid-template-columns: 1fr 9fr 1fr;
+	gap: 0.7rem;
+
+	font-size: 1rem;
+	margin-block: 1rem;
+	cursor: pointer;
+}
+
+.input-container[data-checked="true"] {
+	background-color: brown;
+}
+
+.input-container h1 {
+	font-size: 1em;
+	margin: 0;
+}
+
+.input-container p {
+	font-size: 0.9em;
+	margin: 0;
+}
+
+.input-container :not(img) {
+	grid-column: 2;
+}
+
+.input-container > input {
+	display: none;
+}
+
+.checkbox > input {
+	display: block;
+	grid-column: 1;
+}
+
+#next-step {
+	margin-left: auto;
+}

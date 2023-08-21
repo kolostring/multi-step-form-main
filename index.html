@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/images/favicon-32x32.png"
+		/>
+
+		<title>Frontend Mentor | Multi-step form</title>
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main>
+			<!-- Sidebar start -->
+
+			Step 1 Your info Step 2 Select plan Step 3 Add-ons Step 4 Summary
+
+			<!-- Sidebar end -->
+
+			<!-- Panel start-->
+			<div class="panel">
+				<div class="panel-content">
+					<!-- Step 1 start -->
+
+					<div class="slide" id="step-1">
+						<h1>Personal info</h1>
+						<p>
+							Please provide your name, email address, and phone
+							number.
+						</p>
+
+						<label for="user-name">Name</label>
+						<br />
+						<input
+							type="text"
+							id="user-name"
+							placeholder="e.g. Stephen King"
+						/>
+						<br />
+
+						<label for="user-email">Email Address</label>
+						<br />
+						<input
+							type="email"
+							id="user-email"
+							placeholder="e.g. stephenking@lorem.com"
+						/>
+						<br />
+
+						<label for="user-phone">Phone Number</label>
+						<br />
+						<input
+							type="tel"
+							id="user-phone"
+							placeholder="e.g. +1 234 567 890"
+						/>
+						<br />
+					</div>
+
+					<!-- Step 1 end -->
+
+					<!-- Step 2 start -->
+
+					<div class="slide" id="step-2">
+						<h1>Select your plan</h1>
+						<p>You have the option of monthly or yearly billing.</p>
+
+						<div class="input-container" id="plan-arcade">
+							<img src="./assets/images/icon-arcade.svg" alt="" />
+							<input type="radio" name="plan" />
+							<h1>Arcade</h1>
+							<p class="price"></p>
+						</div>
+
+						<div class="input-container" id="plan-advanced">
+							<img
+								src="./assets/images/icon-advanced.svg"
+								alt=""
+							/>
+							<input type="radio" name="plan" />
+							<h1>Advanced</h1>
+							<p class="price"></p>
+						</div>
+
+						<div class="input-container" id="plan-pro">
+							<img src="./assets/images/icon-pro.svg" alt="" />
+							<input type="radio" name="plan" />
+							<h1>Pro</h1>
+							<p class="price"></p>
+						</div>
+
+						<div class="toggle-container" id="plan-yearly">
+							<p>Monthly</p>
+							<input type="checkbox" />
+							<p>Yearly</p>
+						</div>
+					</div>
+
+					<!-- Step 2 end -->
+
+					<!-- Step 3 start -->
+
+					<div class="slide" id="step-3">
+						<h1>Pick add-ons</h1>
+						<p>Add-ons help enhance your gaming experience.</p>
+						<div class="input-container checkbox">
+							<input
+								type="checkbox"
+								name="addons"
+								id="online-service"
+							/>
+							<h1>Online service</h1>
+							<p>Access to multiplayer games</p>
+						</div>
+						<div class="input-container checkbox">
+							<input
+								type="checkbox"
+								name="addons"
+								id="larger-storage"
+							/>
+							<h1>Larger storage</h1>
+							<p>Extra 1TB of cloud save</p>
+						</div>
+						<div class="input-container checkbox">
+							<input
+								type="checkbox"
+								name="addons"
+								id="custom-profile"
+							/>
+							<h1>Customizable Profile</h1>
+							<p>Custom theme on your profile</p>
+						</div>
+					</div>
+
+					<!-- Step 3 end -->
+
+					<!-- Step 4 start -->
+
+					<div class="slide" id="step-4">
+						<h1>Finishing up</h1>
+						<p>
+							Double-check everything looks OK before confirming.
+						</p>
+					</div>
+
+					<!-- Step 4 end -->
+
+					<!-- Step 5 start -->
+
+					<div class="slide" id="step-5">
+						<h1>Thank you!</h1>
+						<p>
+							Thanks for confirming your subscription! We hope you
+							have fun using our platform. If you ever need
+							support, please feel free to email us at
+							support@loremgaming.com.
+						</p>
+					</div>
+
+					<!-- Step 5 end -->
+				</div>
+			</div>
+			<!-- Panel end-->
+
+			<div class="nav-buttons">
+				<button id="go-back">Go Back</button>
+				<button id="next-step">Next Step</button>
+			</div>
+		</main>
+
+		<script src="main.js"></script>
+	</body>
+</html>
