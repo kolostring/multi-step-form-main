@@ -30,7 +30,6 @@ body {
 	flex-shrink: 0;
 	width: var(--panel-width);
 	height: fit-content;
-	margin-right: 30px;
 	background-color: aqua;
 }
 
@@ -67,6 +66,7 @@ body {
 }
 
 .input-container > input {
+	pointer-events: none;
 	display: none;
 }
 

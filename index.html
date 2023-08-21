@@ -35,33 +35,32 @@
 							Please provide your name, email address, and phone
 							number.
 						</p>
-
-						<label for="user-name">Name</label>
-						<br />
-						<input
-							type="text"
-							id="user-name"
-							placeholder="e.g. Stephen King"
-						/>
-						<br />
-
-						<label for="user-email">Email Address</label>
-						<br />
-						<input
-							type="email"
-							id="user-email"
-							placeholder="e.g. stephenking@lorem.com"
-						/>
-						<br />
-
-						<label for="user-phone">Phone Number</label>
-						<br />
-						<input
-							type="tel"
-							id="user-phone"
-							placeholder="e.g. +1 234 567 890"
-						/>
-						<br />
+						<div class="input-field">
+							<label for="user-name">Name</label>
+							<br />
+							<input
+								type="text"
+								id="user-name"
+								placeholder="e.g. Stephen King"
+							/>
+							<br />
+							<label for="user-email">Email Address</label>
+							<br />
+							<input
+								type="email"
+								id="user-email"
+								placeholder="e.g. stephenking@lorem.com"
+							/>
+							<br />
+							<label for="user-phone">Phone Number</label>
+							<br />
+							<input
+								type="tel"
+								id="user-phone"
+								placeholder="e.g. +1 234 567 890"
+							/>
+							<br />
+						</div>
 					</div>
 
 					<!-- Step 1 end -->
@@ -72,28 +71,34 @@
 						<h1>Select your plan</h1>
 						<p>You have the option of monthly or yearly billing.</p>
 
-						<div class="input-container" id="plan-arcade">
-							<img src="./assets/images/icon-arcade.svg" alt="" />
-							<input type="radio" name="plan" />
-							<h1>Arcade</h1>
-							<p class="price"></p>
-						</div>
-
-						<div class="input-container" id="plan-advanced">
-							<img
-								src="./assets/images/icon-advanced.svg"
-								alt=""
-							/>
-							<input type="radio" name="plan" />
-							<h1>Advanced</h1>
-							<p class="price"></p>
-						</div>
-
-						<div class="input-container" id="plan-pro">
-							<img src="./assets/images/icon-pro.svg" alt="" />
-							<input type="radio" name="plan" />
-							<h1>Pro</h1>
-							<p class="price"></p>
+						<div class="input-field">
+							<div class="input-container" id="plan-arcade">
+								<img
+									src="./assets/images/icon-arcade.svg"
+									alt=""
+								/>
+								<input type="radio" name="plan" />
+								<h1>Arcade</h1>
+								<p class="price"></p>
+							</div>
+							<div class="input-container" id="plan-advanced">
+								<img
+									src="./assets/images/icon-advanced.svg"
+									alt=""
+								/>
+								<input type="radio" name="plan" />
+								<h1>Advanced</h1>
+								<p class="price"></p>
+							</div>
+							<div class="input-container" id="plan-pro">
+								<img
+									src="./assets/images/icon-pro.svg"
+									alt=""
+								/>
+								<input type="radio" name="plan" />
+								<h1>Pro</h1>
+								<p class="price"></p>
+							</div>
 						</div>
 
 						<div class="toggle-container" id="plan-yearly">
@@ -110,32 +115,35 @@
 					<div class="slide" id="step-3">
 						<h1>Pick add-ons</h1>
 						<p>Add-ons help enhance your gaming experience.</p>
-						<div class="input-container checkbox">
-							<input
-								type="checkbox"
-								name="addons"
-								id="online-service"
-							/>
-							<h1>Online service</h1>
-							<p>Access to multiplayer games</p>
-						</div>
-						<div class="input-container checkbox">
-							<input
-								type="checkbox"
-								name="addons"
-								id="larger-storage"
-							/>
-							<h1>Larger storage</h1>
-							<p>Extra 1TB of cloud save</p>
-						</div>
-						<div class="input-container checkbox">
-							<input
-								type="checkbox"
-								name="addons"
-								id="custom-profile"
-							/>
-							<h1>Customizable Profile</h1>
-							<p>Custom theme on your profile</p>
+
+						<div class="input-field">
+							<div class="input-container checkbox">
+								<input
+									type="checkbox"
+									name="addons"
+									id="online-service"
+								/>
+								<h1>Online service</h1>
+								<p>Access to multiplayer games</p>
+							</div>
+							<div class="input-container checkbox">
+								<input
+									type="checkbox"
+									name="addons"
+									id="larger-storage"
+								/>
+								<h1>Larger storage</h1>
+								<p>Extra 1TB of cloud save</p>
+							</div>
+							<div class="input-container checkbox">
+								<input
+									type="checkbox"
+									name="addons"
+									id="custom-profile"
+								/>
+								<h1>Customizable Profile</h1>
+								<p>Custom theme on your profile</p>
+							</div>
 						</div>
 					</div>
 
@@ -175,6 +183,6 @@
 			</div>
 		</main>
 
-		<script src="main.js"></script>
+		<script type="module" src="main.js"></script>
 	</body>
 </html>
