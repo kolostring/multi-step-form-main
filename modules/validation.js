@@ -6,26 +6,34 @@ function validateEmail(email) {
 function validateTelephone(telephone) {
 	return /^\+\d{10,}$/.test(telephone.value);
 }
+function validateRadios(radios) {
+	let res = false;
+	for (let radio of radios) {
+		res |= radio.checked;
+	}
+	return res;
+}
+function generalValidation(args) {
+	let res = true;
+
+	for (const container of args) {
+		switch (container.type) {
+			case "email":
+				res &= validateEmail(container);
+				break;
+			case "tel":
+				res &= validateTelephone(container);
+				break;
+		}
+	}
+	return res;
+}
 
 function validate(args) {
+	if (args.length === 0) return true;
 	if (args[0].type === "radio") {
-		let res = false;
-		for (let radio of args) {
-			res |= radio.checked;
-		}
-		return res;
+		return validateRadios(args);
 	} else {
-		let res = true;
-		for (const container of args) {
-			switch (container.type) {
-				case "email":
-					res &= validateEmail(container);
-					break;
-				case "tel":
-					res &= validateTelephone(container);
-					break;
-			}
-		}
-		return res;
+		return generalValidation(args);
 	}
 }
