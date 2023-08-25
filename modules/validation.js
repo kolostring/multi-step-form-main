@@ -1,39 +1,57 @@
 export { validate };
 
-function validateEmail(email) {
-	return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value);
-}
-function validateTelephone(telephone) {
-	return /^\+\d{10,}$/.test(telephone.value);
-}
-function validateRadios(radios) {
+function radiobuttonsValidation(radios) {
 	let res = false;
 	for (let radio of radios) {
 		res |= radio.checked;
 	}
-	return res;
-}
-function generalValidation(args) {
-	let res = true;
-
-	for (const container of args) {
-		switch (container.type) {
-			case "email":
-				res &= validateEmail(container);
-				break;
-			case "tel":
-				res &= validateTelephone(container);
-				break;
-		}
-	}
-	return res;
-}
-
-function validate(args) {
-	if (args.length === 0) return true;
-	if (args[0].type === "radio") {
-		return validateRadios(args);
+	if (res == false) {
+		radios[0].parentNode.parentNode.setAttribute("invalid", "no-selection");
 	} else {
-		return generalValidation(args);
+		radios[0].parentNode.parentNode.removeAttribute("invalid");
 	}
+	return res;
+}
+
+function updateInputAttributes(input, valid) {
+	const parent = input.parentNode;
+	if (input.value.length === 0) {
+		parent.setAttribute("invalid", "empty");
+	} else if (!valid) {
+		parent.setAttribute("invalid", "invalid");
+	} else {
+		parent.removeAttribute("invalid");
+	}
+}
+
+function textFieldsValidation(inputs) {
+	let res = true;
+	const validateFunctions = {
+		text: (text) => {
+			return text.value.length > 0;
+		},
+		email: (email) => {
+			return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+				email.value
+			);
+		},
+		tel: (tel) => {
+			return /^\+\d{10,}$/.test(tel.value);
+		},
+	};
+	let aux;
+
+	for (const input of inputs) {
+		aux = validateFunctions[input.type](input);
+		updateInputAttributes(input, aux);
+		res &= aux;
+	}
+	return res;
+}
+
+const validateFunctions = [textFieldsValidation, radiobuttonsValidation];
+
+function validate(inputs, index) {
+	if (index < 0 || index >= validateFunctions.length) return true;
+	return validateFunctions[index](inputs);
 }

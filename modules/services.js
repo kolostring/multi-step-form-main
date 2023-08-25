@@ -59,7 +59,6 @@ function getResult() {
 
 	result.appendChild(table);
 	table.appendChild(splan);
-	table.appendChild(document.createElement("hr"));
 	table.appendChild(saddons);
 
 	const str = ["(Monthly)", "(Yearly)"];
@@ -74,9 +73,9 @@ function getResult() {
 			aux.innerHTML = `
             <h1>${plan.container.querySelector("h1").innerHTML} ${
 				str[Number(yearly.checked)]
-			}</h1>
-            <a href="#">Change</a>
-            <p class="price">${getPrice(plan.price)}</p>`;
+			}<a href="#"><br/>Change</a></h1>
+            
+            <h1 class="price">${getPrice(plan.price)}</h1>`;
 			splan.appendChild(aux);
 
 			total += plan.price;
@@ -89,7 +88,7 @@ function getResult() {
 			aux = document.createElement("div");
 			aux.innerHTML = `
             <p>${addon.container.querySelector("h1").innerHTML}</p>
-            <p class="price">${getPrice(addon.price)}</p>
+            <p class="price">+${getPrice(addon.price)}</p>
             `;
 			saddons.appendChild(aux);
 
@@ -100,6 +99,7 @@ function getResult() {
 	{
 		const perstr = ["(per month)", "(per year)"];
 		aux = document.createElement("div");
+		aux.className = "total";
 		aux.innerHTML = `
         <p>Total ${perstr[Number(yearly.checked)]}</p>
         <p class="price">+${getPrice(total)}</p>`;

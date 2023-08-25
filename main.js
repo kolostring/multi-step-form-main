@@ -28,18 +28,26 @@ function updateSlides() {
 }
 
 nextStep.addEventListener("click", () => {
-	if (validate(steps[actualSlide].querySelectorAll(".input-field input"))) {
+	const inputs = steps[actualSlide].querySelectorAll("form input");
+	if (validate(inputs, actualSlide)) {
 		nextSlide();
-	} else {
-		alert("CAMPOS INVALIDOS");
+		updateSlides();
 	}
-
-	updateSlides();
 });
 
 goBack.addEventListener("click", () => {
 	previousSlide();
 	updateSlides();
+});
+
+document.querySelectorAll(".input-field").forEach((inputField) => {
+	inputField.querySelectorAll("input").forEach((input) => {
+		const func = () => {
+			inputField.removeAttribute("invalid");
+		};
+		input.addEventListener("click", func);
+		input.addEventListener("input", func);
+	});
 });
 
 updateSlides();

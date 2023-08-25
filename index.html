@@ -35,32 +35,39 @@
 							Please provide your name, email address, and phone
 							number.
 						</p>
-						<div class="input-field">
-							<label for="user-name">Name</label>
-							<br />
-							<input
-								type="text"
-								id="user-name"
-								placeholder="e.g. Stephen King"
-							/>
-							<br />
-							<label for="user-email">Email Address</label>
-							<br />
-							<input
-								type="email"
-								id="user-email"
-								placeholder="e.g. stephenking@lorem.com"
-							/>
-							<br />
-							<label for="user-phone">Phone Number</label>
-							<br />
-							<input
-								type="tel"
-								id="user-phone"
-								placeholder="e.g. +1 234 567 890"
-							/>
-							<br />
-						</div>
+
+						<form>
+							<div class="input-field">
+								<label for="user-name">Name</label>
+								<input
+									type="text"
+									id="user-name"
+									placeholder="e.g. Stephen King"
+									value="Stephen King"
+									required
+								/>
+							</div>
+							<div class="input-field">
+								<label for="user-email">Email Address</label>
+								<input
+									type="email"
+									id="user-email"
+									placeholder="e.g. stephenking@lorem.com"
+									value="stephenking@lorem.com"
+									required
+								/>
+							</div>
+							<div class="input-field">
+								<label for="user-phone">Phone Number</label>
+								<input
+									type="tel"
+									id="user-phone"
+									placeholder="e.g. +1 234 567 890"
+									value="+1234567890"
+									required
+								/>
+							</div>
+						</form>
 					</div>
 
 					<!-- Step 1 end -->
@@ -71,38 +78,40 @@
 						<h1>Select your plan</h1>
 						<p>You have the option of monthly or yearly billing.</p>
 
-						<div class="input-field">
-							<div class="input-container" id="plan-arcade">
-								<img
-									src="./assets/images/icon-arcade.svg"
-									alt=""
-								/>
-								<input type="radio" name="plan" />
-								<h1>Arcade</h1>
-								<p class="price"></p>
-								<p class="offer"></p>
+						<form>
+							<div class="input-field">
+								<div class="input-container" id="plan-arcade">
+									<img
+										src="./assets/images/icon-arcade.svg"
+										alt=""
+									/>
+									<input type="radio" name="plan" />
+									<h1>Arcade</h1>
+									<p class="price"></p>
+									<p class="offer"></p>
+								</div>
+								<div class="input-container" id="plan-advanced">
+									<img
+										src="./assets/images/icon-advanced.svg"
+										alt=""
+									/>
+									<input type="radio" name="plan" />
+									<h1>Advanced</h1>
+									<p class="price"></p>
+									<p class="offer"></p>
+								</div>
+								<div class="input-container" id="plan-pro">
+									<img
+										src="./assets/images/icon-pro.svg"
+										alt=""
+									/>
+									<input type="radio" name="plan" />
+									<h1>Pro</h1>
+									<p class="price"></p>
+									<p class="offer"></p>
+								</div>
 							</div>
-							<div class="input-container" id="plan-advanced">
-								<img
-									src="./assets/images/icon-advanced.svg"
-									alt=""
-								/>
-								<input type="radio" name="plan" />
-								<h1>Advanced</h1>
-								<p class="price"></p>
-								<p class="offer"></p>
-							</div>
-							<div class="input-container" id="plan-pro">
-								<img
-									src="./assets/images/icon-pro.svg"
-									alt=""
-								/>
-								<input type="radio" name="plan" />
-								<h1>Pro</h1>
-								<p class="price"></p>
-								<p class="offer"></p>
-							</div>
-						</div>
+						</form>
 
 						<div class="toggle-container" id="plan-yearly">
 							<p>Monthly</p>
@@ -119,7 +128,7 @@
 						<h1>Pick add-ons</h1>
 						<p>Add-ons help enhance your gaming experience.</p>
 
-						<div class="input-field">
+						<form>
 							<div
 								class="input-container checkbox"
 								id="online-service"
@@ -147,7 +156,7 @@
 								<p>Custom theme on your profile</p>
 								<p class="price"></p>
 							</div>
-						</div>
+						</form>
 					</div>
 
 					<!-- Step 3 end -->

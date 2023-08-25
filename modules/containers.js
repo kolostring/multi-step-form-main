@@ -1,14 +1,18 @@
 export {};
 
 document.querySelectorAll(".input-container").forEach((inputParent) => {
-	inputParent.addEventListener("click", () => {
-		inputParent.querySelector("input").checked ^= 1;
+	const input = inputParent.querySelector("input");
+	const clickInput = () => {
+		input.checked ^= 1;
+		input.dispatchEvent(new Event("click"));
 		dataCheckInputContainer(inputParent);
+	};
+	inputParent.addEventListener("click", () => {
+		clickInput();
 	});
 	inputParent.addEventListener("keydown", (event) => {
 		if (event.key === "Enter" || event.key === " ") {
-			inputParent.querySelector("input").checked ^= 1;
-			dataCheckInputContainer(inputParent);
+			clickInput();
 		}
 	});
 	dataCheckInputContainer(inputParent);

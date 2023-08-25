@@ -1,64 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap");
+
 :root {
-	--panel-width: 90vw;
+	--panel-width: 100vw;
+	--slide-width: 90vw;
+	font-family: "Ubuntu", sans-serif;
+	font-size: 16px;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+
+	width: 100vw;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
 
 	background: url("./assets/images/bg-sidebar-mobile.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
+	background-color: hsl(217, 100%, 97%);
+}
+
+h1 {
+	font-size: 1.5em;
+	color: hsl(213, 96%, 18%);
+	margin-block: 0 0.8rem;
+}
+
+p {
+	font-size: 1em;
+	color: hsl(231, 11%, 63%);
+	line-height: 1.5em;
+	margin-block: 0 1rem;
+}
+
+label {
+	font-size: 0.8rem;
+	font-weight: 400;
+	color: hsl(213, 96%, 18%);
+}
+
+input {
+	display: block;
+	font-size: 1rem;
+	font-weight: 500;
+
+	color: hsl(213, 96%, 18%);
+	border: 1px solid hsl(229, 24%, 87%);
+	border-radius: 0.2rem;
+
+	width: 100%;
+	height: 2.5rem;
+	box-sizing: border-box;
+	padding-inline: 1rem;
+	margin: 0;
+}
+
+.input-field {
+	position: relative;
+}
+
+.input-field::before {
+	content: "";
+	font-size: 0.7rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: hsl(354, 84%, 57%);
+}
+
+.input-field[invalid="no-selection"]::before {
+	top: auto;
+	bottom: -1rem;
+	content: "A selection is required";
+}
+.input-field[invalid="empty"]::before {
+	content: "Required field";
+}
+.input-field[invalid="invalid"]::before {
+	content: "Invalid input";
 }
 
 .panel {
 	position: relative;
 	overflow-x: hidden;
 
+	box-sizing: border-box;
 	width: var(--panel-width);
+	padding-inline: calc(calc(var(--panel-width) - var(--slide-width)) / 2);
 }
 
 .panel-content {
 	display: flex;
 	flex-direction: row;
+
 	transition: transform 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .slide {
+	display: flex;
+
+	flex-direction: column;
 	flex-shrink: 0;
-	width: var(--panel-width);
+
+	box-sizing: border-box;
+	width: 90vw;
 	height: fit-content;
-	background-color: aqua;
+
+	padding: 2rem;
+	margin-right: 5rem;
+	border-radius: 0.6rem;
+	background-color: hsl(231, 100%, 99%);
+	box-shadow: 0px 0px 10px 10px hsla(231, 11%, 63%, 0.109);
 }
 
-.nav-buttons {
-	display: flex;
-}
+/*Input Container*/
 
 .input-container {
 	display: grid;
-	grid-template-columns: 1fr 9fr 1fr;
-	gap: 0.7rem;
+	grid-template-columns: 3fr 9fr 1fr;
+	grid-template-rows: 1rem;
 
-	font-size: 1rem;
-	margin-block: 1rem;
+	font-size: 0.65rem;
+	margin-bottom: 0.7rem;
+	padding: 1rem;
+	border: 1px solid hsl(229, 24%, 87%);
+	border-radius: 0.5rem;
+
 	cursor: pointer;
+	user-select: none;
+}
+
+.input-container * {
+	margin: 0;
+	padding: 0;
+}
+
+.price {
+	font-size: 0.9rem;
+}
+
+.offer {
+	font-size: 0.8rem;
+	color: hsl(213, 96%, 18%);
 }
 
 .input-container[data-checked="true"] {
-	background-color: brown;
-}
-
-.input-container h1 {
-	font-size: 1em;
-	margin: 0;
-}
-
-.input-container p {
-	font-size: 0.9em;
-	margin: 0;
+	border-color: hsl(243, 100%, 62%);
+	background-color: hsla(228, 100%, 84%, 0.091);
 }
 
 .input-container :not(img) {
@@ -70,9 +161,99 @@ body {
 	display: none;
 }
 
+.checkbox {
+	grid-template-columns: 2fr 12fr 1fr;
+	padding: 0.6rem 0.8rem;
+}
+
 .checkbox > input {
 	display: block;
+	width: 1.1rem;
 	grid-column: 1;
+	grid-row: span 2;
+}
+
+.checkbox > h1 {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.checkbox > p {
+	font-size: 0.8rem;
+}
+
+.checkbox > .price {
+	display: block;
+	justify-self: center;
+	grid-column: 3;
+	grid-row: span 2;
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: hsl(243, 100%, 62%);
+}
+
+.result .plan > *,
+.result .addons > *,
+.result .total {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+}
+
+.plan,
+.total {
+	margin-block: 1rem;
+}
+
+.total {
+	padding-inline: 1rem;
+}
+
+.services-table {
+	background-color: hsl(217, 100%, 97%);
+	border-radius: 0.4rem;
+	padding: 0.2rem 1rem;
+}
+
+.result .plan .price {
+	line-height: 2rem;
+}
+
+.result .addons .price {
+	color: hsl(213, 96%, 18%);
+	font-size: 0.8rem;
+}
+
+.result .plan {
+	width: 100%;
+	border-bottom: 1px solid hsl(229, 24%, 87%);
+}
+
+.result .addons > * {
+	grid-template-rows: 2rem;
+}
+
+.result :not(.price) {
+	grid-column: 1;
+}
+
+.result h1 {
+	font-size: 0.9rem;
+}
+
+.result p,
+.result a {
+	font-size: 0.8rem;
+	padding: 0;
+}
+
+.result .total .price {
+	font-size: 1rem;
+	font-weight: 700;
+	color: hsl(243, 100%, 62%);
+}
+
+.nav-buttons {
+	display: flex;
 }
 
 #next-step {
