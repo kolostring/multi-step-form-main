@@ -18,7 +18,6 @@ function updateSlides() {
 	switch (actualSlide) {
 		case 4:
 			nextStep.style.display = "none";
-		case 0:
 			goBack.style.display = "none";
 			break;
 		case 3:
@@ -29,13 +28,23 @@ function updateSlides() {
 				updateSlides();
 			});
 			nextStep.innerHTML = "Confirm";
+			nextStep.style.backgroundColor = "hsl(243, 100%, 62%)";
+			break;
+		case 0:
+			nextStep.style.display = "flex";
+			goBack.style.display = "none";
+			nextStep.innerHTML = "Next Step";
+			nextStep.style.backgroundColor = "hsl(213, 96%, 18%)";
 			break;
 		default:
 			goBack.style.display = "flex";
 			nextStep.innerHTML = "Next Step";
+			nextStep.style.backgroundColor = "hsl(213, 96%, 18%)";
 	}
 
-	navButtons[actualSlide].checked = true;
+	if (actualSlide < navButtons.length) {
+		navButtons[actualSlide].checked = true;
+	}
 }
 
 document.querySelectorAll(".nav-button a").forEach((btn, index) => {
