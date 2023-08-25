@@ -58,6 +58,45 @@ input {
 	margin: 0;
 }
 
+nav p,
+nav h1 {
+	display: none;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 13vh;
+}
+
+nav input {
+	display: none;
+}
+
+nav a {
+	display: block;
+	text-align: center;
+	line-height: 2.1rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	text-decoration: none;
+	width: 2.1rem;
+	height: 2.1rem;
+
+	margin-inline: 0.5rem;
+
+	color: hsl(229, 24%, 87%);
+	border: 1px solid hsl(229, 24%, 87%);
+	border-radius: 100vmax;
+}
+
+input:checked + a {
+	background-color: hsl(206, 94%, 87%);
+	color: hsl(213, 96%, 18%);
+}
+
 .input-field {
 	position: relative;
 }
@@ -106,10 +145,10 @@ input {
 	flex-shrink: 0;
 
 	box-sizing: border-box;
-	width: 90vw;
+	width: var(--slide-width);
 	height: fit-content;
 
-	padding: 2rem;
+	padding: 2rem 1.4rem;
 	margin-right: 5rem;
 	border-radius: 0.6rem;
 	background-color: hsl(231, 100%, 99%);
@@ -166,11 +205,23 @@ input {
 	padding: 0.6rem 0.8rem;
 }
 
-.checkbox > input {
-	display: block;
-	width: 1.1rem;
+.checkbox::before {
+	content: "";
 	grid-column: 1;
 	grid-row: span 2;
+	margin-block: auto;
+	width: 1.1rem;
+	height: 1.1rem;
+	border-radius: 0.3rem;
+	border: 1px solid hsl(229, 24%, 87%);
+}
+
+.checkbox[data-checked="true"]::before {
+	background-image: url("./assets/images/icon-checkmark.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: hsl(243, 100%, 62%);
+	border-color: hsl(243, 100%, 62%);
 }
 
 .checkbox > h1 {
@@ -192,70 +243,141 @@ input {
 	color: hsl(243, 100%, 62%);
 }
 
-.result .plan > *,
-.result .addons > *,
-.result .total {
+.toggle-container {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+	padding: 0;
+	border: none;
+	cursor: auto;
+}
+
+.toggle-container > p {
+	font-size: 0.9rem;
+	font-weight: 500;
+	margin: auto;
+}
+
+.toggle-container :first-child {
+	color: hsl(213, 96%, 18%);
+	margin-right: 2rem;
+}
+.toggle-container :last-child {
+	margin-left: 2rem;
+}
+.toggle-container[data-checked="true"] :first-child {
+	color: hsl(231, 11%, 63%);
+}
+.toggle-container[data-checked="true"] :last-child {
+	color: hsl(213, 96%, 18%);
+}
+
+.toggle-container > .switch {
+	display: block;
+	background-color: hsl(213, 96%, 18%);
+	border-radius: 100vmax;
+	padding: 0.2rem;
+	width: 2rem;
+	cursor: pointer;
+}
+
+.toggle-container > .switch::before {
+	display: block;
+	content: "";
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 100vmax;
+	background-color: hsl(0, 0%, 100%);
+}
+
+.toggle-container[data-checked="true"] > .switch::before {
+	margin-left: auto;
+}
+
+.result p,
+.result a,
+.result h1 {
+	font-size: 0.9rem;
+	padding: 0.2rem 0;
+	margin: 0;
+}
+
+.result .price {
+	font-size: 0.9rem;
+	margin: auto;
+}
+
+.services-table > *,
+.total {
 	display: grid;
 	grid-template-columns: 4fr 1fr;
-}
-
-.plan,
-.total {
-	margin-block: 1rem;
-}
-
-.total {
-	padding-inline: 1rem;
-}
-
-.services-table {
-	background-color: hsl(217, 100%, 97%);
-	border-radius: 0.4rem;
-	padding: 0.2rem 1rem;
-}
-
-.result .plan .price {
-	line-height: 2rem;
-}
-
-.result .addons .price {
-	color: hsl(213, 96%, 18%);
-	font-size: 0.8rem;
-}
-
-.result .plan {
-	width: 100%;
-	border-bottom: 1px solid hsl(229, 24%, 87%);
-}
-
-.result .addons > * {
-	grid-template-rows: 2rem;
+	padding-block: 0.8rem;
 }
 
 .result :not(.price) {
 	grid-column: 1;
 }
 
-.result h1 {
-	font-size: 0.9rem;
+.services-table {
+	background-color: hsl(217, 100%, 97%);
+	padding: 0.2rem 1rem;
+	border-radius: 0.4rem;
 }
 
-.result p,
-.result a {
-	font-size: 0.8rem;
-	padding: 0;
+.plan {
+	border-bottom: 1px solid hsl(229, 24%, 87%);
+	padding-block: 1rem;
 }
 
-.result .total .price {
-	font-size: 1rem;
-	font-weight: 700;
+.addons .price {
+	color: hsl(213, 96%, 18%);
+}
+
+.total {
+	padding-inline: 1rem;
+}
+
+.total .price {
+	font-size: 1.2rem;
+	font-weight: 500;
 	color: hsl(243, 100%, 62%);
+}
+
+#step-5 {
+	padding-block: 4rem;
+	text-align: center;
+}
+
+#step-5 img {
+	height: 4rem;
+	margin-bottom: 2rem;
 }
 
 .nav-buttons {
 	display: flex;
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	background-color: white;
+}
+
+#go-back,
+#next-step {
+	font-size: 1rem;
+	font-weight: 700;
+
+	background-color: transparent;
+	color: hsl(231, 11%, 63%);
+	border: none;
+	border-radius: 0.3rem;
+
+	padding: 0.5rem 1.3rem;
+	margin: 1rem;
+	cursor: pointer;
 }
 
 #next-step {
+	background-color: hsl(243, 100%, 62%);
+	color: white;
 	margin-left: auto;
 }

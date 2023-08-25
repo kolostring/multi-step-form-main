@@ -1,10 +1,16 @@
-import { actualSlide, nextSlide, previousSlide } from "./modules/panel.js";
+import {
+	actualSlide,
+	focusSlide,
+	nextSlide,
+	previousSlide,
+} from "./modules/panel.js";
 import { validate } from "./modules/validation.js";
 import { getResult } from "./modules/services.js";
 
 const steps = document.querySelectorAll(".panel-content .slide");
 const result = document.querySelector("#result-table");
 
+const navButtons = document.getElementsByName("nav");
 const nextStep = document.querySelector("#next-step");
 const goBack = document.querySelector("#go-back");
 
@@ -18,14 +24,37 @@ function updateSlides() {
 		case 3:
 			result.innerHTML = "";
 			result.appendChild(getResult());
-
+			result.querySelector("a").addEventListener("click", () => {
+				focusSlide(1);
+				updateSlides();
+			});
 			nextStep.innerHTML = "Confirm";
 			break;
 		default:
 			goBack.style.display = "flex";
 			nextStep.innerHTML = "Next Step";
 	}
+
+	navButtons[actualSlide].checked = true;
 }
+
+document.querySelectorAll(".nav-button a").forEach((btn, index) => {
+	btn.addEventListener("click", () => {
+		if (index < actualSlide) {
+			focusSlide(index);
+		} else if (index > actualSlide) {
+			let i;
+			for (i = actualSlide; i < index; i++) {
+				const inputs = steps[i].querySelectorAll("form input");
+				if (!validate(inputs, i)) {
+					break;
+				}
+			}
+			focusSlide(i);
+		}
+		updateSlides();
+	});
+});
 
 nextStep.addEventListener("click", () => {
 	const inputs = steps[actualSlide].querySelectorAll("form input");

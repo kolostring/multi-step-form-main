@@ -17,13 +17,37 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<!-- Sidebar start -->
+		<nav>
+			<div class="nav-button">
+				<input type="radio" name="nav" />
+				<a href="#">1</a>
+				<p>Step 1</p>
+				<h1>Your info</h1>
+			</div>
+			<div class="nav-button">
+				<input type="radio" name="nav" />
+				<a href="#">2</a>
+				<p>Step 2</p>
+				<h1>Select Plan</h1>
+			</div>
+			<div class="nav-button">
+				<input type="radio" name="nav" />
+				<a href="#">3</a>
+				<p>Step 3</p>
+				<h1>ADD-ONS</h1>
+			</div>
+			<div class="nav-button">
+				<input type="radio" name="nav" />
+				<a href="#">4</a>
+				<p>Step 4</p>
+				<h1>Summary</h1>
+			</div>
+		</nav>
+
+		<!-- Sidebar end -->
+
 		<main>
-			<!-- Sidebar start -->
-
-			Step 1 Your info Step 2 Select plan Step 3 Add-ons Step 4 Summary
-
-			<!-- Sidebar end -->
-
 			<!-- Panel start-->
 			<div class="panel">
 				<div class="panel-content">
@@ -113,8 +137,12 @@
 							</div>
 						</form>
 
-						<div class="toggle-container" id="plan-yearly">
+						<div
+							class="input-container toggle-container"
+							id="plan-yearly"
+						>
 							<p>Monthly</p>
+							<div class="switch"></div>
 							<input type="checkbox" />
 							<p>Yearly</p>
 						</div>
@@ -179,6 +207,7 @@
 					<!-- Step 5 start -->
 
 					<div class="slide" id="step-5">
+						<img src="./assets/images/icon-thank-you.svg" alt="" />
 						<h1>Thank you!</h1>
 						<p>
 							Thanks for confirming your subscription! We hope you

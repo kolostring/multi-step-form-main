@@ -68,15 +68,12 @@ function getResult() {
 
 	for (const plan of plans) {
 		if (plan.container.querySelector("input").checked) {
-			aux = document.createElement("div");
-
-			aux.innerHTML = `
+			splan.innerHTML = `
             <h1>${plan.container.querySelector("h1").innerHTML} ${
 				str[Number(yearly.checked)]
-			}<a href="#"><br/>Change</a></h1>
+			}</h1> <a href="#">Change</a>
             
             <h1 class="price">${getPrice(plan.price)}</h1>`;
-			splan.appendChild(aux);
 
 			total += plan.price;
 			break;
@@ -85,12 +82,10 @@ function getResult() {
 
 	for (const addon of addons) {
 		if (addon.container.querySelector("input").checked) {
-			aux = document.createElement("div");
-			aux.innerHTML = `
+			saddons.innerHTML += `
             <p>${addon.container.querySelector("h1").innerHTML}</p>
             <p class="price">+${getPrice(addon.price)}</p>
             `;
-			saddons.appendChild(aux);
 
 			total += addon.price;
 		}
