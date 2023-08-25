@@ -57,6 +57,8 @@ input {
 	box-sizing: border-box;
 	padding-inline: 1rem;
 	margin: 0;
+
+	transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /*Navigation menu*/
@@ -151,10 +153,17 @@ input:checked + a {
 	top: 0;
 	right: 0;
 	color: hsl(354, 84%, 57%);
+
+	transform: translateX(10px);
+	transition: transform 100ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .input-field[invalid] input {
 	border-color: hsl(354, 84%, 57%);
+}
+
+.input-field[invalid]::before {
+	transform: translateX(0);
 }
 
 .input-field[invalid="no-selection"]::before {
@@ -183,6 +192,8 @@ input:checked + a {
 
 	cursor: pointer;
 	user-select: none;
+
+	transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 input:hover,
@@ -233,6 +244,9 @@ input:hover,
 	height: 1.1rem;
 	border-radius: 0.3rem;
 	border: 1px solid hsl(229, 24%, 87%);
+
+	transition: border-color 70ms cubic-bezier(0.165, 0.84, 0.44, 1),
+		background-color 100ms ease-in;
 }
 
 .checkbox[data-checked="true"]::before {
@@ -296,24 +310,29 @@ input:hover,
 
 .toggle-container > .switch {
 	display: block;
+	position: relative;
 	background-color: hsl(213, 96%, 18%);
 	border-radius: 100vmax;
-	padding: 0.2rem;
 	width: 2rem;
+	height: 1.2rem;
 	cursor: pointer;
 }
 
 .toggle-container > .switch::before {
 	display: block;
+	position: absolute;
 	content: "";
 	width: 0.8rem;
 	height: 0.8rem;
 	border-radius: 100vmax;
 	background-color: hsl(0, 0%, 100%);
+	top: 0.2rem;
+	left: 0.2rem;
+	transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .toggle-container[data-checked="true"] > .switch::before {
-	margin-left: auto;
+	transform: translateX(0.8rem);
 }
 
 /*Results table*/
@@ -436,6 +455,7 @@ input:hover,
 		grid-template-columns: 1fr 2fr;
 		width: var(--main-width);
 		height: min(95vh, 530px);
+		border-radius: 1rem;
 		padding: 1rem;
 	}
 
